@@ -2137,6 +2137,13 @@ TBLPROPERTIES (
         )
 
         self.validate(
+            "SELECT ARRAY_AGG(DISTINCT a)",
+            "SELECT COLLECT_LIST(DISTINCT a)",
+            read="snowflake",
+            write="spark",
+        )
+
+        self.validate(
             "SELECT TO_NUMBER(123456)",
             "SELECT CAST(123456 AS LONG)",
             read="snowflake",
